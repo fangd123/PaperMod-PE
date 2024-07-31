@@ -7,3 +7,40 @@ html {
 .toc {
     padding-left: 8rem; 
 }
+
+.entry-categories {
+    margin-bottom: 0.5rem;
+  }
+  
+  .category-link {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* Light mode styles */
+@media (prefers-color-scheme: light) {
+  .category-link {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+  .category-link:hover {
+    background-color: #d0d0d0;
+  }
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .category-link {
+    background-color: #444;
+    color: #f0f0f0;
+  }
+  .category-link:hover {
+    background-color: #555;
+  }
+}

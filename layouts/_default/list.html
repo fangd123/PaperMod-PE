@@ -67,6 +67,11 @@
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
   <header class="entry-header">
+    {{- with .Params.category }}
+    <div class="entry-categories">
+      <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="category-link">{{ . }}</a>
+    </div>
+    {{- end }}
     <h2 class="entry-hint-parent">
         {{- .Title }}
         {{- if (and (eq .Weight 1) (.Param "ShowTop")) }}<span class="pe-entry-top">&nbsp;&nbsp;[置顶]</span>{{- end }}
@@ -125,3 +130,4 @@
 {{- end }}{{/* end profileMode */}}
 
 {{- end }}{{- /* end main */ -}}
+
