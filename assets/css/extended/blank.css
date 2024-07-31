@@ -44,3 +44,31 @@ html {
     background-color: #555;
   }
 }
+
+.archive-posts {
+  flex: 1;
+}
+
+.archive-day {
+  margin-bottom: 15px;
+}
+
+.archive-day-header {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.archive-entry {
+  margin-bottom: 5px;
+}
+
+.archive-entry-title {
+  display: inline;
+  margin-right: 10px;
+}
+
+.archive-meta {
+  display: inline;
+  font-size: 0.9em;
+  color: #666;
+}

@@ -45,6 +45,10 @@
 {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
 {{- end }}
 
+{{/* Custom sorting logic */}}
+{{- $pages = sort $pages "Params.score" "desc" }}
+{{- $pages = sort $pages "Date" "desc" }}
+
 {{- $paginator := .Paginate $pages }}
 
 {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
