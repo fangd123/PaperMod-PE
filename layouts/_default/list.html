@@ -46,10 +46,22 @@
 {{- end }}
 
 {{/* Custom sorting logic */}}
-{{- $pages = sort $pages "Params.score" "desc" }}
-{{- $pages = sort $pages "Date" "desc" }}
+{{ $pages = $pages.ByPublishDate.Reverse }}
 
-{{- $paginator := .Paginate $pages }}
+{{ $groupedPages := $pages.GroupByDate "2006-01-02" }}
+
+{{ $sortedPages := slice }}
+{{ range $groupedPages }}
+  {{ $date := .Key }}
+  {{ $pagesForDate := .Pages }}
+  {{ $sortedPagesForDate := sort $pagesForDate "Params.score" "desc" }}
+  {{ range $sortedPagesForDate }}
+    {{ $sortedPages = $sortedPages | append . }}
+  {{ end }}
+{{ end }}
+
+
+{{- $paginator := .Paginate $sortedPages }}
 
 {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 {{- partial "home_info.html" . }}
